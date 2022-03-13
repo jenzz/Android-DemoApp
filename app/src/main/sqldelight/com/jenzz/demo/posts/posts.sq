@@ -1,0 +1,23 @@
+CREATE TABLE PostEntity (
+    id INTEGER AS Int NOT NULL PRIMARY KEY,
+    userId INTEGER AS Int NOT NULL,
+    title TEXT NOT NULL,
+    body TEXT NOT NULL,
+    FOREIGN KEY (userId) REFERENCES UserEntity(id)
+);
+
+selectAll:
+SELECT *
+FROM PostEntity
+WHERE userId = :userId;
+
+upsert {
+  UPDATE PostEntity
+  SET userId = :userId,
+      title = :title,
+      body = :body
+  WHERE id = :id;
+
+  INSERT OR IGNORE INTO PostEntity (id, userId, title, body)
+  VALUES (:id, :userId, :title, :body);
+}

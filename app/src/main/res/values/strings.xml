@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">Demo App</string>
+    <string name="back">Back</string>
+    <string name="posts_by">Posts By %1$s</string>
+    <string name="loading_users_failed">Loading users failed.</string>
+    <string name="loading_posts_failed">Loading posts failed.</string>
+    <string name="fetching_users_failed">Updating users failed.</string>
+    <string name="fetching_posts_failed">Updating posts failed.</string>
+
+</resources>

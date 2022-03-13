@@ -1,0 +1,30 @@
+CREATE TABLE UserEntity (
+    id INTEGER AS Int NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    nickname TEXT NOT NULL,
+    email TEXT NOT NULL,
+    website TEXT NOT NULL,
+    phone TEXT NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM UserEntity;
+
+selectById:
+SELECT *
+FROM UserEntity
+WHERE id = :userId;
+
+upsert {
+  UPDATE UserEntity
+  SET name = :name,
+      nickname = :nickname,
+      email = :email,
+      website = :website,
+      phone = :phone
+  WHERE id = :id;
+
+  INSERT OR IGNORE INTO UserEntity (id, name, nickname, email, website, phone)
+  VALUES (:id, :name, :nickname, :email, :website, :phone);
+}
